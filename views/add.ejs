@@ -1,0 +1,91 @@
+<%- include('partials/header', { pageTitle: 'Add Book' }) %>
+
+<main class="container form-page">
+  <div class="form-header">
+    <a href="/" class="back-link">← Back to Dashboard</a>
+    <h1>Add New Book</h1>
+    <p>Fill in the details below to add a book to your store.</p>
+  </div>
+
+  <% if (error) { %>
+    <div class="alert alert-error">❌ <%= error %></div>
+  <% } %>
+
+  <form class="book-form" method="POST" action="/books/add" enctype="multipart/form-data">
+
+    <div class="form-grid">
+      <!-- Title -->
+      <div class="form-group span-2">
+        <label for="title">Book Title <span class="required">*</span></label>
+        <input type="text" id="title" name="title" placeholder="e.g. Rich Dad Poor Dad" required maxlength="200" />
+      </div>
+
+      <!-- Author -->
+      <div class="form-group">
+        <label for="author">Author Name <span class="required">*</span></label>
+        <input type="text" id="author" name="author" placeholder="e.g. Robert Kiyosaki" required maxlength="100" />
+      </div>
+
+      <!-- Category -->
+      <div class="form-group">
+        <label for="category">Category <span class="required">*</span></label>
+        <select id="category" name="category" required>
+          <option value="" disabled selected>Select a category</option>
+          <option value="Fiction">Fiction</option>
+          <option value="Non-Fiction">Non-Fiction</option>
+          <option value="Science">Science</option>
+          <option value="Technology">Technology</option>
+          <option value="Finance">Finance</option>
+          <option value="Self-Help">Self-Help</option>
+          <option value="Biography">Biography</option>
+          <option value="History">History</option>
+          <option value="Children">Children</option>
+          <option value="Comics">Comics</option>
+          <option value="Romance">Romance</option>
+          <option value="Mystery">Mystery</option>
+          <option value="Other">Other</option>
+        </select>
+      </div>
+
+      <!-- Price -->
+      <div class="form-group">
+        <label for="price">Price (₹) <span class="required">*</span></label>
+        <input type="number" id="price" name="price" placeholder="e.g. 499" required min="0" step="0.01" />
+      </div>
+
+      <!-- Quantity -->
+      <div class="form-group">
+        <label for="quantity">Quantity <span class="required">*</span></label>
+        <input type="number" id="quantity" name="quantity" placeholder="e.g. 10" required min="0" />
+      </div>
+
+      <!-- Description -->
+      <div class="form-group span-2">
+        <label for="description">Description</label>
+        <textarea id="description" name="description" rows="4"
+          placeholder="Brief description of the book..." maxlength="1000"></textarea>
+      </div>
+
+      <!-- Image -->
+      <div class="form-group span-2">
+        <label for="image">Book Cover Image</label>
+        <div class="file-upload-area" id="dropArea">
+          <input type="file" id="image" name="image" accept="image/*" class="file-input" />
+          <div class="file-upload-label">
+            <span class="upload-icon">🖼️</span>
+            <p>Click or drag & drop to upload cover image</p>
+            <small>JPEG, PNG, GIF, WebP — Max 5 MB</small>
+          </div>
+          <img id="imagePreview" class="image-preview hidden" alt="Preview" />
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <a href="/" class="btn btn-ghost">Cancel</a>
+      <button type="submit" class="btn btn-primary">📚 Add Book</button>
+    </div>
+  </form>
+</main>
+
+<%- include('partials/footer') %>
