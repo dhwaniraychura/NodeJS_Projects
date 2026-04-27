@@ -1,0 +1,79 @@
+<%- include('header') %>
+
+<section class="form-section">
+    <div class="container">
+        <div class="row justify-center">
+            <div class="col-8">
+                <div class="form-card">
+                    <h2 class="form-card-title">➕ Add Movie</h2>
+                    <form action="/insertMovie" method="post" enctype="multipart/form-data">
+                        <div class="form-grid">
+
+                            <div class="form-group">
+                                <label>Title</label>
+                                <input type="text" name="title" placeholder="e.g. Interstellar" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Release Year</label>
+                                <input type="text" name="releaseYear" placeholder="e.g. 2014" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Genre</label>
+                                <input type="text" name="genre" placeholder="Action, Drama" required>
+                                <span class="form-hint">Comma separated</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Duration</label>
+                                <input type="text" name="duration" placeholder="2h 30m" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Language</label>
+                                <input type="text" name="language" placeholder="Hindi, English" required>
+                                <span class="form-hint">Comma separated</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Rating</label>
+                                <input type="text" name="rating" placeholder="8.5" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Actors</label>
+                                <input type="text" name="actors" placeholder="Actor1, Actor2" required>
+                                <span class="form-hint">Comma separated</span>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Directors</label>
+                                <input type="text" name="directors" placeholder="Director1" required>
+                                <span class="form-hint">Comma separated</span>
+                            </div>
+
+                            <div class="form-group full">
+                                <label>Upload Poster</label>
+                                <input type="file" name="poster" accept="image/*" required>
+                            </div>
+
+                            <div class="form-group full">
+                                <label>Description</label>
+                                <textarea name="description" placeholder="Write a short description..." required></textarea>
+                            </div>
+
+                            <div class="form-actions full">
+                                <a href="/" class="btn btn-outline">Cancel</a>
+                                <button type="submit" class="btn btn-red">Add Movie</button>
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('footer') %>

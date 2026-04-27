@@ -1,0 +1,88 @@
+<%- include('header') %>
+
+<!-- BANNER -->
+<section class="banner">
+    <div class="container">
+        <div class="banner-center">
+            <div class="banner-badge">🎬 Stream Unlimited</div>
+            <h1 class="banner-title">Unlimited movies,<br>shows, and more</h1>
+            <p class="banner-sub">Starts at ₹149. Cancel at any time.</p>
+            <p class="banner-desc">Ready to watch? Enter your email to create or restart your membership.</p>
+            <form class="cta-form">
+                <input type="email" placeholder="Email address" required>
+                <button type="submit" class="btn btn-red">Get Started ›</button>
+            </form>
+        </div>
+    </div>
+</section>
+
+<!-- TRENDING -->
+<section class="section">
+    <div class="container">
+        <div class="section-head">
+            <h2 class="section-title">🎬 Trending Now</h2>
+            <a href="/view-movie" class="view-all">View All →</a>
+        </div>
+
+        <% if (trendingMovies && trendingMovies.length > 0) { %>
+        <div class="movies-grid">
+            <% trendingMovies.forEach(function(movie, i) { %>
+            <a href="/movie/<%= movie._id %>" class="movie-card">
+                <div class="movie-card-img">
+                    <img src="/assets/uploads/<%= movie.poster %>" alt="<%= movie.title %>">
+                    <span class="rank-num"><%= i + 1 %></span>
+                    <div class="card-hover-overlay">
+                        <span class="play-icon">▶ View Details</span>
+                    </div>
+                </div>
+                <div class="movie-card-body">
+                    <h4 class="movie-card-title"><%= movie.title %></h4>
+                    <div class="movie-meta">
+                        <span class="meta-year"><%= movie.releaseYear %></span>
+                        <span class="meta-rating">⭐ <%= movie.rating %></span>
+                    </div>
+                    <div class="genre-list">
+                        <% movie.genre.slice(0,2).forEach(function(g) { %>
+                            <span class="genre-tag"><%= g.trim() %></span>
+                        <% }); %>
+                    </div>
+                </div>
+            </a>
+            <% }); %>
+        </div>
+        <% } else { %>
+        <div class="empty-state">
+            <div class="empty-icon">🎥</div>
+            <h3>No movies yet</h3>
+            <p>Be the first to add a movie to the collection!</p>
+            <a href="/add-movie" class="btn btn-red" style="margin: 0 auto;">+ Add Movie</a>
+        </div>
+        <% } %>
+    </div>
+</section>
+
+<!-- MORE REASONS TO JOIN -->
+<section class="features-section">
+    <div class="container">
+        <h2 class="features-title">More reasons to join</h2>
+        <div class="features-grid">
+            <div class="feature-card">
+                <div class="feature-icon">📱</div>
+                <h3>Watch anywhere</h3>
+                <p>Stream on your phone, tablet, laptop, and TV.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🔒</div>
+                <h3>Cancel anytime</h3>
+                <p>Join today, no long-term contracts or commitments.</p>
+            </div>
+            <div class="feature-card">
+                <div class="feature-icon">🎬</div>
+                <h3>Latest movies</h3>
+                <p>New movies and shows are added every week.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('footer') %>

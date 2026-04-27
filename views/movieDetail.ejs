@@ -1,0 +1,64 @@
+<%- include('header') %>
+
+<section class="detail-section">
+    <div class="detail-bg" style="background-image: url('/assets/uploads/<%= movie.poster %>')"></div>
+    <div class="detail-overlay"></div>
+
+    <div class="container detail-container">
+        <div class="detail-layout">
+
+            <!-- LEFT: Poster -->
+            <div class="detail-poster">
+                <img src="/assets/uploads/<%= movie.poster %>" alt="<%= movie.title %>">
+            </div>
+
+            <!-- RIGHT: Info -->
+            <div class="detail-info">
+
+                <h1 class="detail-title"><%= movie.title %></h1>
+
+                <div class="detail-rating-box">
+                    <span class="detail-star">⭐</span>
+                    <span class="detail-score"><%= movie.rating %>/10</span>
+                    <span class="detail-votes">User Rating</span>
+                </div>
+
+                <div class="detail-meta-row">
+                    <span class="detail-meta-item">⏱ <%= movie.duration %></span>
+                    <span class="detail-dot">•</span>
+                    <span class="detail-meta-item"><%= movie.genre.join(', ') %></span>
+                    <span class="detail-dot">•</span>
+                    <span class="detail-meta-item">📅 <%= movie.releaseYear %></span>
+                </div>
+
+                <div class="detail-lang-row">
+                    <% movie.language.forEach(function(lang) { %>
+                        <span class="lang-badge"><%= lang.trim() %></span>
+                    <% }); %>
+                </div>
+
+                <p class="detail-description"><%= movie.description %></p>
+
+                <div class="detail-credits">
+                    <div class="credit-item">
+                        <span class="credit-label">🎭 Actors</span>
+                        <span class="credit-value"><%= movie.actors.join(', ') %></span>
+                    </div>
+                    <div class="credit-item">
+                        <span class="credit-label">🎬 Directors</span>
+                        <span class="credit-value"><%= movie.directors.join(', ') %></span>
+                    </div>
+                </div>
+
+                <div class="detail-actions">
+                    
+                    
+                    <a href="/" class="btn btn-outline">← Back to List</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+
+<%- include('footer') %>
