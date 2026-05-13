@@ -1,0 +1,94 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/sidebar') %>
+<%- include('../../partials/navbar') %>
+
+<div class="main-panel">
+  <div class="content-wrapper">
+
+    <div class="page-header">
+      <h3 class="page-title">User Management</h3>
+      <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item active">All Users</li>
+        </ol>
+      </nav>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12 grid-margin stretch-card">
+        <div class="card">
+          <div class="card-body">
+
+            <div class="d-flex justify-content-between align-items-center mb-3">
+              <h4 class="card-title mb-0">All Users</h4>
+              <a href="/users/add" class="btn btn-primary btn-sm">
+                <i class="mdi mdi-plus"></i> Add User
+              </a>
+            </div>
+
+            <div class="table-responsive">
+              <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>Avatar</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Role</th>
+                    <th>City</th>
+                    <th>Joined</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if (users.length === 0) { %>
+                    <tr>
+                      <td colspan="9" class="text-center text-muted">
+                        No users found. <a href="/users/add">Add one now</a>.
+                      </td>
+                    </tr>
+                  <% } else { %>
+                    <% users.forEach(function(user, index) { %>
+                      <tr>
+                        <td><%= index + 1 %></td>
+                        <td>
+                          <% if (user.avatar) { %>
+                            <img src="/uploads/<%= user.avatar %>"
+                                 width="40" height="40"
+                                 style="border-radius:50%; object-fit:cover;">
+                          <% } else { %>
+                            <img src="/assets/images/faces/face15.jpg"
+                                 width="40" height="40"
+                                 style="border-radius:50%;">
+                          <% } %>
+                        </td>
+                        <td><%= user.fname %> <%= user.lname %></td>
+                        <td><%= user.email %></td>
+                        <td><%= user.phone || '-' %></td>
+                        <td>
+                          <span class="badge badge-info"><%= user.role %></span>
+                        </td>
+                        <td><%= user.city %></td>
+                        <td><%= user.createdAt ? user.createdAt.toDateString() : '-' %></td>
+                        <td>
+                          <a href="/users/edit/<%= user._id %>" class="btn btn-warning btn-sm">Edit</a>
+                          <a href="/users/delete/<%= user._id %>"
+                             class="btn btn-danger btn-sm"
+                             onclick="return confirm('Delete this user?')">Delete</a>
+                        </td>
+                      </tr>
+                    <% }) %>
+                  <% } %>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- content-wrapper -->
+  <%- include('../../partials/footer') %>
+</div><!-- main-panel -->

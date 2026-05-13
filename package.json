@@ -1,0 +1,21 @@
+{
+  "name": "corona-admin-node",
+  "version": "1.0.0",
+  "description": "Corona Admin Dashboard - Node.js + EJS",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "nodemon app.js"
+  },
+  "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie-parser": "^1.4.7",
+    "ejs": "^3.1.10",
+    "express": "^4.22.1",
+    "mongoose": "^8.23.1",
+    "multer": "^1.4.5-lts.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
