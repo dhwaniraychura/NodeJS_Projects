@@ -1,0 +1,240 @@
+<%- include('../partials/header') %>
+<%- include('../partials/navbar') %>
+
+<div class="container-fluid page-body-wrapper">
+
+  <%- include('../partials/sidebar') %>
+
+  <div class="main-panel">
+
+    <div class="content-wrapper">
+
+      <div class="page-header">
+        <h3 class="page-title">
+          <span class="page-title-icon bg-gradient-primary text-white me-2">
+            <i class="mdi mdi-account-circle"></i>
+          </span>
+          My Profile
+        </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Profile Settings</li>
+          </ol>
+        </nav>
+      </div>
+
+      <% if (typeof success !== 'undefined' && success && success.length > 0) { %>
+        <% success.forEach(function(msg) { %>
+          <div class="alert alert-success alert-dismissible fade show" role="alert">
+            <%= msg %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        <% }); %>
+      <% } %>
+
+      <% if (typeof error !== 'undefined' && error && error.length > 0) { %>
+        <% error.forEach(function(msg) { %>
+          <div class="alert alert-danger alert-dismissible fade show" role="alert">
+            <%= msg %>
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+          </div>
+        <% }); %>
+      <% } %>
+
+      <div class="row">
+
+        <!-- Profile Card (left) -->
+        <div class="col-md-4 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body text-center">
+
+              <div class="mb-3">
+                <img
+                  src="<%= currentUser.avtar ? currentUser.avtar : '/assets/images/faces/face15.jpg' %>"
+                  class="rounded-circle"
+                  width="110"
+                  height="110"
+                  style="object-fit: cover; border: 3px solid #dee2e6;"
+                  id="previewImg"
+                  alt="Profile Photo"
+                >
+              </div>
+
+              <h4 class="mb-1"><%= currentUser.username %></h4>
+              <p class="text-muted mb-1"><%= currentUser.email %></p>
+              <span class="badge bg-gradient-primary"><%= currentUser.role || 'user' %></span>
+
+              <hr>
+
+              <div class="text-start px-2">
+                <p class="mb-1">
+                  <i class="mdi mdi-gender-male-female text-primary me-2"></i>
+                  <strong>Gender:</strong> <%= currentUser.gender || '—' %>
+                </p>
+                <p class="mb-1">
+                  <i class="mdi mdi-calendar text-primary me-2"></i>
+                  <strong>DOB:</strong> <%= currentUser.dob || '—' %>
+                </p>
+                <p class="mb-1">
+                  <i class="mdi mdi-map-marker text-primary me-2"></i>
+                  <strong>City:</strong> <%= currentUser.city || '—' %>
+                </p>
+              </div>
+
+            </div>
+          </div>
+        </div>
+
+        <!-- Update Form (right) -->
+        <div class="col-md-8 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+
+              <h4 class="card-title">Update Profile</h4>
+              <p class="card-description">Edit your profile details below</p>
+
+              <form
+                action="/profile/update"
+                method="POST"
+                enctype="multipart/form-data"
+                class="forms-sample"
+              >
+
+                <div class="form-group">
+                  <label>Username</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    name="username"
+                    placeholder="Enter Username"
+                    value="<%= currentUser.username %>"
+                    required
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input
+                    type="email"
+                    class="form-control"
+                    name="email"
+                    placeholder="Enter Email"
+                    value="<%= currentUser.email %>"
+                    required
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label>Password</label>
+                  <input
+                    type="password"
+                    class="form-control"
+                    name="password"
+                    placeholder="Enter New Password"
+                  >
+                  <small class="text-muted">Leave blank to keep current password</small>
+                </div>
+
+                <div class="form-group">
+                  <label>Gender</label>
+                  <select class="form-control" name="gender">
+                    <option value="">-- Select Gender --</option>
+                    <option value="Male"   <%= currentUser.gender === 'Male'   ? 'selected' : '' %>>Male</option>
+                    <option value="Female" <%= currentUser.gender === 'Female' ? 'selected' : '' %>>Female</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Date Of Birth</label>
+                  <input
+                    type="date"
+                    class="form-control"
+                    name="dob"
+                    value="<%= currentUser.dob || '' %>"
+                  >
+                </div>
+
+                <div class="form-group">
+                  <label>Role</label>
+                  <select class="form-control" name="role">
+                    <option value="">-- Select Role --</option>
+                    <option value="admin"     <%= currentUser.role === 'admin'     ? 'selected' : '' %>>Admin</option>
+                    <option value="editor"    <%= currentUser.role === 'editor'    ? 'selected' : '' %>>Editor</option>
+                    <option value="moderator" <%= currentUser.role === 'moderator' ? 'selected' : '' %>>Moderator</option>
+                    <option value="user"      <%= currentUser.role === 'user'      ? 'selected' : '' %>>User</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>City</label>
+                  <select class="form-control" name="city">
+                    <option value="">-- Select City --</option>
+                    <option value="Surat"     <%= currentUser.city === 'Surat'     ? 'selected' : '' %>>Surat</option>
+                    <option value="Ahmedabad" <%= currentUser.city === 'Ahmedabad' ? 'selected' : '' %>>Ahmedabad</option>
+                    <option value="Rajkot"    <%= currentUser.city === 'Rajkot'    ? 'selected' : '' %>>Rajkot</option>
+                    <option value="Vadodara"  <%= currentUser.city === 'Vadodara'  ? 'selected' : '' %>>Vadodara</option>
+                  </select>
+                </div>
+
+                <div class="form-group">
+                  <label>Profile Photo</label>
+
+                  <% if (currentUser.avtar) { %>
+                    <div class="mb-2">
+                      <img
+                        src="<%= currentUser.avtar %>"
+                        width="70"
+                        height="70"
+                        class="rounded-circle"
+                        style="object-fit: cover;"
+                        alt="Current Photo"
+                      >
+                      <small class="text-muted ms-2">Current photo</small>
+                    </div>
+                  <% } %>
+
+                  <input
+                    type="file"
+                    name="avtar"
+                    class="form-control"
+                    accept="image/*"
+                    onchange="previewProfile(this)"
+                  >
+                  <small class="text-muted">Upload a new photo to update (JPG, PNG)</small>
+                </div>
+
+                <button type="submit" class="btn btn-gradient-primary me-2">
+                  Save Changes
+                </button>
+
+                <a href="/" class="btn btn-light">Cancel</a>
+
+              </form>
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+
+    <%- include('../partials/footer') %>
+
+  </div>
+
+</div>
+
+<script>
+// Live preview of newly selected photo on the card
+function previewProfile(input) {
+  if (input.files && input.files[0]) {
+    var reader = new FileReader();
+    reader.onload = function(e) {
+      document.getElementById('previewImg').src = e.target.result;
+    };
+    reader.readAsDataURL(input.files[0]);
+  }
+}
+</script>
