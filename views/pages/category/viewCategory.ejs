@@ -1,0 +1,110 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+<div class="page-body-wrapper">
+  <%- include('../../partials/sidebar') %>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title">
+          <span class="page-title-icon bg-gradient-primary text-white me-2">
+            <i class="mdi mdi-shape"></i>
+          </span> Categories
+        </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Categories</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="card-title mb-0">All Categories</h4>
+                <div>
+                  <a href="/category/add" class="btn btn-gradient-primary btn-sm me-2">
+                    <i class="mdi mdi-plus"></i> Add Category
+                  </a>
+                  <a href="/category/subcategory/add" class="btn btn-gradient-info btn-sm me-2">
+                    <i class="mdi mdi-plus"></i> Add SubCategory
+                  </a>
+                  <a href="/category/trash" class="btn btn-gradient-danger btn-sm">
+                    <i class="mdi mdi-delete-restore"></i> Trash
+                  </a>
+                </div>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>#</th>
+                      <th>Image</th>
+                      <th>Category Name</th>
+                      <th>Sub Categories</th>
+                      <th>Status</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (categories.length === 0) { %>
+                    <tr>
+                      <td colspan="6" class="text-center text-muted">No categories found.</td>
+                    </tr>
+                    <% } %>
+                    <% categories.forEach((category, index) => { %>
+                    <tr>
+                      <td><%= index + 1 %></td>
+                      <td>
+                        <% if (category.categoryImage) { %>
+                          <img src="<%= category.categoryImage %>" width="60" height="60" class="rounded" style="object-fit:cover;">
+                        <% } else { %>
+                          <span class="text-muted">No Image</span>
+                        <% } %>
+                      </td>
+                      <td><strong><%= category.categoryName %></strong></td>
+                      <td>
+                        <%
+                          let relatedSub = subCategories.filter(sub =>
+                            sub.categoryId && sub.categoryId._id.toString() === category._id.toString()
+                          );
+                        %>
+                        <% if (relatedSub.length > 0) { %>
+                          <% relatedSub.forEach(sub => { %>
+                            <span class="badge bg-primary me-1"><%= sub.subCategoryName %></span>
+                          <% }) %>
+                        <% } else { %>
+                          <span class="text-muted">No SubCategory</span>
+                        <% } %>
+                      </td>
+                      <td>
+                        <% if (category.status) { %>
+                          <a href="/category/status/<%= category._id %>" class="badge bg-success text-white text-decoration-none">Active</a>
+                        <% } else { %>
+                          <a href="/category/status/<%= category._id %>" class="badge bg-danger text-white text-decoration-none">Inactive</a>
+                        <% } %>
+                      </td>
+                      <td>
+                        <a href="/category/edit/<%= category._id %>" class="btn btn-warning btn-sm me-1">
+                          <i class="mdi mdi-pencil"></i> Edit
+                        </a>
+                        <a href="/category/delete/<%= category._id %>" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Move this category and its subcategories to trash?')">
+                          <i class="mdi mdi-delete"></i> Delete
+                        </a>
+                      </td>
+                    </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('../../partials/footer') %>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+<div class="page-body-wrapper">
+  <%- include('../../partials/sidebar') %>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title">
+          <span class="page-title-icon bg-gradient-primary text-white me-2">
+            <i class="mdi mdi-shape-plus"></i>
+          </span> Add Category
+        </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/category/view">Categories</a></li>
+            <li class="breadcrumb-item active" aria-current="page">Add Category</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="row">
+        <div class="col-md-7 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Add New Category</h4>
+              <p class="card-description">Fill in the details below</p>
+              <form action="/category/add" method="post" enctype="multipart/form-data" class="forms-sample">
+                <div class="form-group">
+                  <label>Category Name</label>
+                  <input type="text" class="form-control" name="categoryName" placeholder="Enter Category Name" required>
+                </div>
+                <div class="form-group">
+                  <label>Category Image</label>
+                  <input type="file" name="categoryImage" class="file-upload-default">
+                  <div class="input-group col-xs-12">
+                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                    <span class="input-group-append">
+                      <button class="file-upload-browse btn btn-gradient-primary py-3" type="button">Upload</button>
+                    </span>
+                  </div>
+                </div>
+                <button type="submit" class="btn btn-gradient-primary me-2">Add Category</button>
+                <a href="/category/view" class="btn btn-light">Cancel</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('../../partials/footer') %>
+    <script src="/assets/js/file-upload.js"></script>
+  </div>
+</div>

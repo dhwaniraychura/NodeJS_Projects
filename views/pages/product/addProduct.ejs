@@ -1,0 +1,104 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+<div class="page-body-wrapper">
+  <%- include('../../partials/sidebar') %>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title">
+          <span class="page-title-icon bg-gradient-primary text-white me-2">
+            <i class="mdi mdi-package-variant-closed"></i>
+          </span> Add Product
+        </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/product/view">Products</a></li>
+            <li class="breadcrumb-item active">Add Product</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="row">
+        <div class="col-md-8 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title">Add New Product</h4>
+              <p class="card-description">Fill in the details below</p>
+              <form action="/product/add" method="post" enctype="multipart/form-data" class="forms-sample">
+
+                <div class="form-group">
+                  <label>Product Name</label>
+                  <input type="text" class="form-control" name="productName" placeholder="Enter Product Name" required>
+                </div>
+
+                <div class="row">
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Category</label>
+                      <select name="categoryId" id="categorySelect" class="form-control form-select" required>
+                        <option value="">-- Select Category --</option>
+                        <% categories.forEach(cat => { %>
+                          <option value="<%= cat._id %>"><%= cat.categoryName %></option>
+                        <% }) %>
+                      </select>
+                    </div>
+                  </div>
+                  <div class="col-md-6">
+                    <div class="form-group">
+                      <label>Sub Category <small class="text-muted">(optional)</small></label>
+                      <select name="subCategoryId" id="subCategorySelect" class="form-control form-select">
+                        <option value="">-- Select SubCategory --</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label>Price (₹)</label>
+                  <input type="number" class="form-control" name="price" placeholder="Enter Price" min="0" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                  <label>Description</label>
+                  <textarea class="form-control" name="description" rows="3" placeholder="Enter product description"></textarea>
+                </div>
+
+                <div class="form-group">
+                  <label>Product Image</label>
+                  <input type="file" name="productImage" class="file-upload-default" accept="image/*">
+                  <div class="input-group col-xs-12">
+                    <input type="text" class="form-control file-upload-info" disabled placeholder="Upload Image">
+                    <span class="input-group-append">
+                      <button class="file-upload-browse btn btn-gradient-primary py-3" type="button">Upload</button>
+                    </span>
+                  </div>
+                </div>
+
+                <button type="submit" class="btn btn-gradient-primary me-2">Add Product</button>
+                <a href="/product/view" class="btn btn-light">Cancel</a>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <%- include('../../partials/footer') %>
+    <script src="/assets/js/file-upload.js"></script>
+    <script>
+      document.getElementById('categorySelect').addEventListener('change', function () {
+        const categoryId = this.value;
+        const subSelect  = document.getElementById('subCategorySelect');
+        subSelect.innerHTML = '<option value="">-- Select SubCategory --</option>';
+        if (!categoryId) return;
+        fetch('/product/subcategories/' + categoryId)
+          .then(r => r.json())
+          .then(data => {
+            data.forEach(sub => {
+              subSelect.innerHTML += `<option value="${sub._id}">${sub.subCategoryName}</option>`;
+            });
+          });
+      });
+    </script>
+  </div>
+</div>

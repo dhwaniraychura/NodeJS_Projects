@@ -1,0 +1,152 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+<div class="page-body-wrapper">
+  <%- include('../../partials/sidebar') %>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title">
+          <span class="page-title-icon bg-gradient-danger text-white me-2">
+            <i class="mdi mdi-delete-restore"></i>
+          </span> Trash — Categories
+        </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/category/view">Categories</a></li>
+            <li class="breadcrumb-item active">Trash</li>
+          </ol>
+        </nav>
+      </div>
+
+      <!-- Trashed Categories -->
+      <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="card-title mb-0">
+                  <i class="mdi mdi-shape text-danger me-1"></i> Deleted Categories
+                </h4>
+                <a href="/category/view" class="btn btn-gradient-primary btn-sm">
+                  <i class="mdi mdi-arrow-left"></i> Back to Categories
+                </a>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>#</th>
+                      <th>Image</th>
+                      <th>Category Name</th>
+                      <th>Deleted At</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (trashedCategories.length === 0) { %>
+                    <tr>
+                      <td colspan="5" class="text-center text-muted">No deleted categories.</td>
+                    </tr>
+                    <% } %>
+                    <% trashedCategories.forEach((category, index) => { %>
+                    <tr>
+                      <td><%= index + 1 %></td>
+                      <td>
+                        <% if (category.categoryImage) { %>
+                          <img src="<%= category.categoryImage %>" width="55" height="55" class="rounded" style="object-fit:cover; opacity:0.6;">
+                        <% } else { %>
+                          <span class="text-muted">No Image</span>
+                        <% } %>
+                      </td>
+                      <td><strong class="text-muted"><%= category.categoryName %></strong></td>
+                      <td>
+                        <small class="text-muted">
+                          <%= category.deletedAt ? new Date(category.deletedAt).toLocaleString('en-IN') : '—' %>
+                        </small>
+                      </td>
+                      <td>
+                        <a href="/category/restore/<%= category._id %>" class="btn btn-success btn-sm me-1"
+                           onclick="return confirm('Restore this category and its subcategories?')">
+                          <i class="mdi mdi-restore"></i> Restore
+                        </a>
+                        <a href="/category/permanent-delete/<%= category._id %>" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Permanently delete this category? This cannot be undone.')">
+                          <i class="mdi mdi-delete-forever"></i> Delete Permanently
+                        </a>
+                      </td>
+                    </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Trashed SubCategories -->
+      <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <h4 class="card-title mb-3">
+                <i class="mdi mdi-tag-multiple text-danger me-1"></i> Deleted SubCategories
+              </h4>
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>#</th>
+                      <th>SubCategory Name</th>
+                      <th>Parent Category</th>
+                      <th>Deleted At</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (trashedSubCategories.length === 0) { %>
+                    <tr>
+                      <td colspan="5" class="text-center text-muted">No deleted subcategories.</td>
+                    </tr>
+                    <% } %>
+                    <% trashedSubCategories.forEach((sub, index) => { %>
+                    <tr>
+                      <td><%= index + 1 %></td>
+                      <td><strong class="text-muted"><%= sub.subCategoryName %></strong></td>
+                      <td>
+                        <% if (sub.categoryId) { %>
+                          <span class="badge bg-secondary"><%= sub.categoryId.categoryName %></span>
+                        <% } else { %>
+                          <span class="text-muted">—</span>
+                        <% } %>
+                      </td>
+                      <td>
+                        <small class="text-muted">
+                          <%= sub.deletedAt ? new Date(sub.deletedAt).toLocaleString('en-IN') : '—' %>
+                        </small>
+                      </td>
+                      <td>
+                        <a href="/category/subcategory/restore/<%= sub._id %>" class="btn btn-success btn-sm me-1"
+                           onclick="return confirm('Restore this subcategory?')">
+                          <i class="mdi mdi-restore"></i> Restore
+                        </a>
+                        <a href="/category/subcategory/permanent-delete/<%= sub._id %>" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Permanently delete this subcategory? This cannot be undone.')">
+                          <i class="mdi mdi-delete-forever"></i> Delete Permanently
+                        </a>
+                      </td>
+                    </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%- include('../../partials/footer') %>
+  </div>
+</div>

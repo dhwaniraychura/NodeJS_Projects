@@ -1,0 +1,96 @@
+<%- include('../../partials/header') %>
+<%- include('../../partials/navbar') %>
+<div class="page-body-wrapper">
+  <%- include('../../partials/sidebar') %>
+  <div class="main-panel">
+    <div class="content-wrapper">
+      <div class="page-header">
+        <h3 class="page-title">
+          <span class="page-title-icon bg-gradient-danger text-white me-2">
+            <i class="mdi mdi-delete-restore"></i>
+          </span> Trash — Products
+        </h3>
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/">Home</a></li>
+            <li class="breadcrumb-item"><a href="/product/view">Products</a></li>
+            <li class="breadcrumb-item active">Trash</li>
+          </ol>
+        </nav>
+      </div>
+
+      <div class="row">
+        <div class="col-12 grid-margin stretch-card">
+          <div class="card">
+            <div class="card-body">
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="card-title mb-0">
+                  <i class="mdi mdi-package-variant-closed text-danger me-1"></i> Deleted Products
+                </h4>
+                <a href="/product/view" class="btn btn-gradient-primary btn-sm">
+                  <i class="mdi mdi-arrow-left"></i> Back to Products
+                </a>
+              </div>
+              <div class="table-responsive">
+                <table class="table table-bordered table-hover">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>#</th>
+                      <th>Image</th>
+                      <th>Product Name</th>
+                      <th>Category</th>
+                      <th>Sub Category</th>
+                      <th>Price</th>
+                      <th>Deleted At</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <% if (trashedProducts.length === 0) { %>
+                    <tr>
+                      <td colspan="8" class="text-center text-muted">No deleted products.</td>
+                    </tr>
+                    <% } %>
+                    <% trashedProducts.forEach((product, index) => { %>
+                    <tr>
+                      <td><%= index + 1 %></td>
+                      <td>
+                        <% if (product.productImage) { %>
+                          <img src="<%= product.productImage %>" width="55" height="55" class="rounded" style="object-fit:cover; opacity:0.6;">
+                        <% } else { %>
+                          <span class="text-muted">No Image</span>
+                        <% } %>
+                      </td>
+                      <td><strong class="text-muted"><%= product.productName %></strong></td>
+                      <td><%= product.categoryId ? product.categoryId.categoryName : '—' %></td>
+                      <td><%= product.subCategoryId ? product.subCategoryId.subCategoryName : '—' %></td>
+                      <td>₹<%= product.price.toLocaleString() %></td>
+                      <td>
+                        <small class="text-muted">
+                          <%= product.deletedAt ? new Date(product.deletedAt).toLocaleString('en-IN') : '—' %>
+                        </small>
+                      </td>
+                      <td>
+                        <a href="/product/restore/<%= product._id %>" class="btn btn-success btn-sm me-1"
+                           onclick="return confirm('Restore this product?')">
+                          <i class="mdi mdi-restore"></i> Restore
+                        </a>
+                        <a href="/product/permanent-delete/<%= product._id %>" class="btn btn-danger btn-sm"
+                           onclick="return confirm('Permanently delete this product? This cannot be undone.')">
+                          <i class="mdi mdi-delete-forever"></i> Delete Permanently
+                        </a>
+                      </td>
+                    </tr>
+                    <% }) %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <%- include('../../partials/footer') %>
+  </div>
+</div>
