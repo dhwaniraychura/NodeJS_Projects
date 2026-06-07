@@ -1,3 +1,4 @@
+
 Project Overview
 Corona Admin Dashboard — a Node.js + EJS server-side web application that provides an admin panel with authentication, a dashboard, and full user/admin CRUD management.
 
@@ -52,4 +53,7 @@ The server runs on http://localhost:8001 and connects to a local MongoDB databas
 <img width="1600" height="853" alt="WhatsApp Image 2026-05-13 at 6 53 37 AM (1)" src="https://github.com/user-attachments/assets/970b945d-5c5a-41ac-8911-dc704ac5e0bb" />
 <img width="1600" height="853" alt="WhatsApp Image 2026-05-13 at 6 53 38 AM" src="https://github.com/user-attachments/assets/b3e6f251-b41e-4388-b87d-882151435763" />
 
+
+=======
+# NodeJS_Projects
 
