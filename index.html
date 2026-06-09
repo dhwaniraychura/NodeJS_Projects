@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Biccas - Increase Your Productivity</title>
+  <link rel="stylesheet" href="./style.css">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet" />
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Manrope:wght@400;600;700;800&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+<!-- ── NAVBAR ─────────────────────────────────────────── -->
+<nav class="navbar navbar-expand-lg">
+  <div class="container">
+    <a class="navbar-brand" href="#">Bi<span>ccas</span></a>
+    <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav mx-auto">
+        <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="#features">Product</a></li>
+        <li class="nav-item"><a class="nav-link" href="#pricing">FAQ</a></li>
+        <li class="nav-item"><a class="nav-link" href="#">Blog</a></li>
+        <li class="nav-item"><a class="nav-link" href="#cta">About Us</a></li>
+      </ul>
+      <div class="d-flex align-items-center gap-3">
+        <a href="#" class="nav-link fw-600" style="font-weight:600">Login</a>
+        <a href="#cta" class="btn-signup">Sign Up</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ───────────────────────────────────────────── -->
+<section class="hero">
+  <div class="container">
+    <div class="row align-items-center g-5">
+
+      <!-- LEFT -->
+      <div class="col-lg-6">
+        <h1>We're here to<br />
+          <span class="highlight">Increase your</span><br />
+          Productivity
+        </h1>
+        <p class="lead mt-4 mb-5">
+          Let's make your work more organize and easily using<br />
+          the Taskio Dashboard with many of the latest<br />
+          features in managing work every day.
+        </p>
+        <div class="hero-btns">
+          <a href="#cta" class="btn btn-primary-green">Try free trial</a>
+          <a href="#features" class="btn-outline-play">
+            <div class="play-circle"><i class="bi bi-play-fill"></i></div>
+            View Demo
+          </a>
+        </div>
+      </div>
+
+      <!-- RIGHT: photo collage -->
+      <div class="col-lg-6 d-flex justify-content-center">
+        <div class="hero-collage">
+
+          <!-- Green background rectangle -->
+          <div class="hero-green-bg"></div>
+
+          <!-- Person photo -->
+          <img
+            src="https://images.unsplash.com/photo-1539571696357-5a69c17a67c6?w=500&q=80"
+            alt="Dashboard user"
+            class="hero-person-img"
+          />
+
+          <!-- Floating: Enter amount / Send card -->
+          <div class="hf-card hf-send">
+            <div class="hf-send-label">Enter amount</div>
+            <div class="hf-send-row">
+              <span class="hf-send-amount">$450..00</span>
+              <button class="hf-send-btn">Send</button>
+            </div>
+          </div>
+
+          <!-- Floating: purple check badge -->
+          <div class="hf-badge hf-badge-purple">
+            <i class="bi bi-check-lg"></i>
+          </div>
+
+          <!-- Floating: Total Income card -->
+          <div class="hf-card hf-income">
+            <div class="hf-income-label">Total Income</div>
+            <div class="hf-income-row">
+              <span class="hf-income-amount">$245.00</span>
+              <i class="bi bi-bar-chart-fill hf-income-icon"></i>
+            </div>
+          </div>
+
+          <!-- Floating: Credit card -->
+          <div class="hf-credit-card">
+            <div class="hf-cc-top">
+              <i class="bi bi-credit-card-2-back-fill hf-cc-chip"></i>
+            </div>
+            <div class="hf-cc-number">•••• •••• •••• 1234</div>
+            <div class="hf-cc-bottom">
+              <span class="hf-cc-label">Creadit Crad</span>
+              <span class="hf-cc-expiry">09/25</span>
+            </div>
+          </div>
+
+          <!-- Floating icon squares -->
+          <div class="hf-icon-sq hf-sq-yellow"><i class="bi bi-layers-fill"></i></div>
+          <div class="hf-icon-sq hf-sq-orange"><i class="bi bi-chat-fill"></i></div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── BRANDS ─────────────────────────────────────────── -->
+<section class="brands-section">
+  <div class="container">
+    <h6 class="text-center mb-4">More than 25,000 teams use Collabs</h6>
+    <div class="d-flex justify-content-center align-items-center gap-5 flex-wrap">
+      <div class="brand-item"><i class="bi bi-camera"></i>Unsplash</div>
+      <div class="brand-item"><i class="bi bi-grid-3x3-gap"></i>Notion</div>
+      <div class="brand-item"><i class="bi bi-broadcast"></i>INTERCOM</div>
+      <div class="brand-item"><i class="bi bi-file-earmark-text"></i>descript</div>
+      <div class="brand-item"><i class="bi bi-check-circle"></i>grammarly</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── SUPPORT SECTION ────────────────────────────────── -->
+<section class="support-section">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+      <div class="col-lg-5 reveal-left">
+        <h2>How we support our partner all over the world</h2>
+        <p class="mt-3">SaaS became a common delivery model for many business applications, including office software, messaging software, payroll processing software, DBMS software, management software.</p>
+        <div class="d-flex gap-4 mt-4 flex-wrap">
+          <div class="rating-card reveal delay-1">
+            <div class="stars">★★★★★</div>
+            <div class="fw-bold mt-1" style="font-size:.95rem;color:var(--dark);">4.9 / 5 rating</div>
+            <div class="text-muted" style="font-size:.78rem;">databricks</div>
+          </div>
+          <div class="rating-card reveal delay-2">
+            <div class="stars">★★★★<span style="color:#d1d5db;">★</span></div>
+            <div class="fw-bold mt-1" style="font-size:.95rem;color:var(--dark);">4.8 / 5 rating</div>
+            <div class="text-muted" style="font-size:.78rem;">Chanralyze</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-7 reveal-right">
+        <div class="row g-4">
+          <div class="col-12">
+            <div class="feature-item">
+              <div class="feature-icon"><i class="bi bi-send"></i></div>
+              <div>
+                <h6>Publishing</h6>
+                <p>Plan, collaborate, and publish your content that drives meaningful engagement and growth for your team.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="feature-item">
+              <div class="feature-icon"><i class="bi bi-bar-chart-line"></i></div>
+              <div>
+                <h6>Analytics</h6>
+                <p>Analyze your performance and create gorgeous reports that show exactly where you stand.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="feature-item">
+              <div class="feature-icon"><i class="bi bi-people"></i></div>
+              <div>
+                <h6>Engagement</h6>
+                <p>Quickly navigate your smile — engage with your audience across every channel seamlessly.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ── FEATURES GRID ──────────────────────────────────── -->
+<section class="features-section" id="features">
+  <div class="container">
+
+    <!-- Header row -->
+    <div class="row justify-content-between align-items-center mb-5">
+      <div class="col-md-5 reveal-left">
+        <h2 class="section-title">Our Features<br />you can get</h2>
+      </div>
+      <div class="col-md-4 reveal">
+        <p class="text-muted" style="font-size:.9rem;line-height:1.7;">We offer a variety of interesting features that you can help increase your productivity at work and manage your project easily.</p>
+      </div>
+      <div class="col-md-2 text-md-end reveal-right">
+        <a href="#cta" class="btn btn-primary-green">Get Started</a>
+      </div>
+    </div>
+
+    <!-- Feature cards -->
+    <div class="row g-4">
+
+      <!-- Card 1: Collaboration Teams -->
+      <div class="col-md-4 reveal delay-1">
+        <div class="feat-card-new">
+          <div class="feat-illustration feat-illus-collab">
+            <!-- Document lines -->
+            <div class="fi-doc">
+              <div class="fi-green-bar"></div>
+              <div class="fi-lines">
+                <div class="fi-line w-70"></div>
+                <div class="fi-line w-90"></div>
+                <div class="fi-line w-60"></div>
+                <div class="fi-line w-80"></div>
+                <div class="fi-line w-50"></div>
+                <div class="fi-line w-70"></div>
+              </div>
+            </div>
+            <!-- Blue block -->
+            <div class="fi-blue-block"></div>
+            <!-- Circles row -->
+            <div class="fi-circles">
+              <div class="fi-circle fi-circle-lg fi-circle-light"></div>
+              <div class="fi-circle fi-circle-xl fi-circle-blue"></div>
+              <div class="fi-circle fi-circle-md fi-circle-green">
+                <i class="bi bi-three-dots"></i>
+              </div>
+            </div>
+            <!-- Green dot and arrow -->
+            <div class="fi-green-dot"></div>
+            <div class="fi-arrow"><i class="bi bi-cursor-fill"></i></div>
+          </div>
+          <h5 class="feat-card-title">Collaboration Teams</h5>
+          <p class="feat-card-desc">Here you can handle projects together with your team virtually.</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Cloud Storage -->
+      <div class="col-md-4 reveal delay-2">
+        <div class="feat-card-new">
+          <div class="feat-illustration feat-illus-cloud">
+            <!-- Cloud icon top right -->
+            <div class="fi-cloud-icon"><i class="bi bi-cloud-fill"></i></div>
+            <!-- Main green card -->
+            <div class="fi-storage-card">
+              <div class="fi-storage-top">
+                <div class="fi-storage-icon"><i class="bi bi-bar-chart-fill"></i></div>
+                <span class="fi-storage-title">Document File</span>
+              </div>
+              <div class="fi-storage-meta">456 GB | 1056 Items</div>
+            </div>
+            <!-- Bar chart -->
+            <div class="fi-bars">
+              <div class="fi-bar" style="height:40px"></div>
+              <div class="fi-bar" style="height:60px"></div>
+              <div class="fi-bar" style="height:50px"></div>
+              <div class="fi-bar" style="height:70px"></div>
+              <div class="fi-bar" style="height:45px"></div>
+            </div>
+          </div>
+          <h5 class="feat-card-title">Cloud Storage</h5>
+          <p class="feat-card-desc">No need to worry about storage because we provide storage up to 2 TB.</p>
+        </div>
+      </div>
+
+      <!-- Card 3: Daily Analytics -->
+      <div class="col-md-4 reveal delay-3">
+        <div class="feat-card-new">
+          <div class="feat-illustration feat-illus-analytics">
+            <!-- Donut chart -->
+            <div class="fi-donut-wrap">
+              <svg viewBox="0 0 120 120" class="fi-donut-svg">
+                <circle cx="60" cy="60" r="46" fill="none" stroke="#e5e7eb" stroke-width="14"/>
+                <circle cx="60" cy="60" r="46" fill="none" stroke="#3b82f6" stroke-width="14"
+                  stroke-dasharray="173 116" stroke-dashoffset="0" stroke-linecap="round"/>
+                <circle cx="60" cy="60" r="46" fill="none" stroke="#facc15" stroke-width="14"
+                  stroke-dasharray="116 173" stroke-dashoffset="-173" stroke-linecap="round"/>
+                <!-- Water drop center -->
+                <text x="60" y="66" text-anchor="middle" font-size="22" fill="#3b82f6">💧</text>
+              </svg>
+              <div class="fi-donut-label fi-label-left">60%</div>
+              <div class="fi-donut-label fi-label-right">40%</div>
+            </div>
+            <!-- Bottom rows -->
+            <div class="fi-analytics-rows">
+              <div class="fi-analytics-row">
+                <div class="fi-anrow-icon fi-anrow-blue"><i class="bi bi-cloud-fill"></i></div>
+                <div class="fi-anrow-lines">
+                  <div class="fi-line w-80 fi-line-blue"></div>
+                  <div class="fi-line w-50 fi-line-green"></div>
+                </div>
+              </div>
+              <div class="fi-analytics-row">
+                <div class="fi-anrow-icon fi-anrow-green"><i class="bi bi-briefcase-fill"></i></div>
+                <div class="fi-anrow-lines">
+                  <div class="fi-line w-60 fi-line-blue"></div>
+                  <div class="fi-line w-40 fi-line-green"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h5 class="feat-card-title">Daily Analytics</h5>
+          <p class="feat-card-desc">We always provide useful information to make it easier for you every day.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── BENEFITS ───────────────────────────────────────── -->
+<section class="benefits-section">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+
+      <!-- LEFT: Text -->
+      <div class="col-lg-5 reveal-left">
+        <div class="section-eyebrow">Benefits</div>
+        <h2 class="section-title">What Benefit<br />Will You Get</h2>
+        <ul class="benefit-list list-unstyled mt-4" id="benefitList">
+          <li><div class="benefit-check"><i class="bi bi-check-lg"></i></div>Free Consulting With Baymont Saving Money</li>
+          <li><div class="benefit-check"><i class="bi bi-check-lg"></i></div>Online Banking</li>
+          <li><div class="benefit-check"><i class="bi bi-check-lg"></i></div>Investment Report Every Month</li>
+          <li><div class="benefit-check"><i class="bi bi-check-lg"></i></div>Saving Money for The Future</li>
+          <li><div class="benefit-check"><i class="bi bi-check-lg"></i></div>Online Transaction</li>
+        </ul>
+      </div>
+
+     <!-- RIGHT: Visual -->
+    <div class="col-lg-7 reveal-right">
+        <div class="benefits-visual">
+
+            <!-- Main laptop image -->
+            <div class="benefits-img-wrap">
+            <img 
+                src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=600&q=80" 
+                alt="Dashboard" 
+                class="benefits-main-img"
+            />
+
+            <!-- Top-left: Amanda Young card -->
+            <div class="ben-card ben-card-tl">
+                <img 
+                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=80&q=80" 
+                alt="Amanda" 
+                class="ben-avatar"
+                />
+                <div>
+                <div class="ben-card-name">Amanda Young</div>
+                <div class="ben-card-sub">Expert Saving Money</div>
+                </div>
+                <div class="ben-msg-icon"><i class="bi bi-chat-fill"></i></div>
+            </div>
+
+            <!-- Top-right: Total Income card -->
+            <div class="ben-card ben-card-tr">
+                <div class="ben-card-sub">Total Income</div>
+                <div class="ben-card-amount">$245.00</div>
+                <i class="bi bi-bar-chart-fill ben-bar-icon"></i>
+            </div>
+
+            <!-- Middle-left: Image icon floating -->
+            <div class="ben-float-icon">
+                <i class="bi bi-image"></i>
+            </div>
+
+            <!-- Bottom-left: Money Transfer card -->
+            <div class="ben-card ben-card-bl">
+                <div class="ben-check-icon"><i class="bi bi-check-circle-fill"></i></div>
+                <span class="ben-card-name">Money Transfer Succesfull</span>
+            </div>
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── PRICING ────────────────────────────────────────── -->
+<section class="pricing-section" id="pricing">
+  <div class="container">
+    <div class="text-center mb-2 reveal">
+      <div class="section-eyebrow">Pricing Plans</div>
+      <h2 class="section-title">Choose Plan<br />That's Right For You</h2>
+      <p class="text-muted mt-2" style="font-size:.9rem;">Choose a plan that works best for you, feel free to contact us.</p>
+    </div>
+
+    <!-- Pill toggle -->
+    <div class="toggle-wrap reveal">
+      <div class="billing-toggle-pill">
+        <button class="pill-btn active" id="pillMonthly">Bil Monthly</button>
+        <button class="pill-btn" id="pillYearly">Bil Yearly</button>
+      </div>
+    </div>
+
+    <div class="row g-4 justify-content-center align-items-stretch">
+
+      <!-- FREE -->
+      <div class="col-md-4 reveal delay-1 d-flex">
+        <div class="price-card w-100">
+          <div class="price-plan-label">Free</div>
+          <p class="price-card-sub">Have a go and test your superpowers</p>
+          <div class="price-amount-wrap">
+            <sup class="price-sup">$</sup>
+            <span class="price-amount">0</span>
+          </div>
+          <ul>
+            <li><i class="bi bi-check-circle-fill"></i>2 Users</li>
+            <li><i class="bi bi-check-circle-fill"></i>2 Files</li>
+            <li><i class="bi bi-check-circle-fill"></i>Public Share &amp; Comments</li>
+            <li><i class="bi bi-check-circle-fill"></i>Chat Support</li>
+            <li><i class="bi bi-check-circle-fill"></i>New income apps</li>
+          </ul>
+          <button class="btn-price mt-auto">Signup for Free</button>
+        </div>
+      </div>
+
+      <!-- PRO (featured) -->
+      <div class="col-md-4 reveal delay-2 d-flex">
+        <div class="price-card featured w-100">
+          <div class="price-plan-label">Pro</div>
+          <p class="price-card-sub" style="color:rgba(255,255,255,.8);">Experiment the power<br/>of infinite possibilities</p>
+          <div class="price-amount-wrap">
+            <sup class="price-sup">$</sup>
+            <span class="price-amount">8</span>
+          </div>
+          <div class="price-save-badge">Save $50 a year</div>
+          <ul>
+            <li><i class="bi bi-check-circle-fill"></i>4 Users</li>
+            <li><i class="bi bi-check-circle-fill"></i>All apps</li>
+            <li><i class="bi bi-check-circle-fill"></i>Unlimited editable exports</li>
+            <li><i class="bi bi-check-circle-fill"></i>Folders and collaboration</li>
+            <li><i class="bi bi-check-circle-fill"></i>All incoming apps</li>
+          </ul>
+          <button class="btn-price-white mt-auto">Go to Pro</button>
+        </div>
+      </div>
+
+      <!-- BUSINESS -->
+      <div class="col-md-4 reveal delay-3 d-flex">
+        <div class="price-card w-100">
+          <div class="price-plan-label">Business</div>
+          <p class="price-card-sub">Unveil new superpowers and join the Design League</p>
+          <div class="price-amount-wrap">
+            <sup class="price-sup">$</sup>
+            <span class="price-amount">16</span>
+          </div>
+          <ul>
+            <li><i class="bi bi-check-circle-fill"></i>All the features of pro plan</li>
+            <li><i class="bi bi-check-circle-fill"></i>Account success Manager</li>
+            <li><i class="bi bi-check-circle-fill"></i>Single Sign-On (SSO)</li>
+            <li><i class="bi bi-check-circle-fill"></i>Co-conception program</li>
+            <li><i class="bi bi-check-circle-fill"></i>Collaboration-Soon</li>
+          </ul>
+          <button class="btn-price mt-auto">Goto Business</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ── TESTIMONIALS + CTA (combined) ─────────────────── -->
+<section class="testi-cta-section" id="cta">
+  <div class="container">
+    <div class="row g-5 align-items-center">
+
+      <!-- LEFT: Testimonial -->
+      <div class="col-lg-6 reveal-left">
+        <div class="section-eyebrow">Testimonials</div>
+        <h2 class="section-title">People are Saying<br />About DoWhith</h2>
+        <p class="testi-cta-lead mt-3">
+          Everything you need to accept to payment and grow<br />
+          your money of manage anywhere on planet
+        </p>
+
+        <!-- Single quote card -->
+        <div class="testi-quote-block mt-4">
+          <div class="testi-quote-mark">"</div>
+          <p class="testi-quote-text">
+            I am very helped by this E-wallet application , my days are very easy to 
+            use this application and its very helpful in my life , even I can pay a short time 🤩
+          </p>
+          <div class="testi-quote-author">_ Aria Zinanrio</div>
+        </div>
+
+        <!-- Avatar row with play button -->
+        <div class="testi-avatar-row mt-4">
+          <div class="testi-real-avatars">
+            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=80&q=80" alt="user" class="testi-real-av" />
+            <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=80&q=80" alt="user" class="testi-real-av" />
+            <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=80&q=80" alt="user" class="testi-real-av" />
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=80&q=80" alt="user" class="testi-real-av" />
+          </div>
+          <div class="testi-play-btn">
+            <i class="bi bi-play-fill"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- RIGHT: Get Started form card -->
+      <div class="col-lg-5 offset-lg-1 reveal-right">
+        <div class="cta-form-card">
+          <!-- App icon -->
+          <div class="cta-app-icon">
+            <i class="bi bi-stack"></i>
+          </div>
+          <h3 class="cta-form-title">Get Started</h3>
+
+          <div class="cta-form-body">
+            <div class="cta-field">
+              <label class="cta-label">Email</label>
+              <input type="email" class="cta-input" placeholder="Enter your email" />
+            </div>
+            <div class="cta-field">
+              <label class="cta-label">Message</label>
+              <textarea class="cta-input cta-textarea" rows="4" placeholder="What are you say ?"></textarea>
+            </div>
+            <button class="btn-cta-form">Request Demo</button>
+            <div class="cta-or">or <a href="#" class="cta-trial-link">Start Free Trial</a></div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ── FOOTER ─────────────────────────────────────────── -->
+<footer>
+  <div class="container">
+    <div class="row g-5">
+      <div class="col-lg-3">
+        <div class="footer-brand">Biccas</div>
+        <p class="mt-3">Get started now try our product</p>
+        <div class="footer-email-wrap">
+          <input type="email" class="footer-input" placeholder="Enter your email here" />
+          <button class="footer-send-btn"><i class="bi bi-arrow-right"></i></button>
+        </div>
+      </div>
+      <div class="col-6 col-lg-2 offset-lg-1">
+        <h6>Support</h6>
+        <a href="#">Help centre</a>
+        <a href="#">Account information</a>
+        <a href="#">About</a>
+        <a href="#">Contact us</a>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Help and Solution</h6>
+        <a href="#">Talk to support</a>
+        <a href="#">Support docs</a>
+        <a href="#">System status</a>
+        <a href="#">Covid response</a>
+      </div>
+      <div class="col-6 col-lg-2">
+        <h6>Product</h6>
+        <a href="#">Update</a>
+        <a href="#">Security</a>
+        <a href="#">Beta test</a>
+        <a href="#">Pricing product</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2024 Biccas Inc. Copyright and rights reserved</span>
+      <div>
+        <a href="#">Terms and Conditions</a>·
+        <a href="#">Privacy Policy</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<script src="./script.js"></script>
+</body>
+</html>
