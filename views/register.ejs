@@ -1,0 +1,51 @@
+<%- include('partials/head') %>
+<%- include('partials/navbar') %>
+
+<div class="auth-wrapper">
+  <div class="form-card narrow">
+    <div class="auth-icon">👨‍🍳</div>
+    <h1>Join the Kitchen</h1>
+    <p class="subtitle">Create an account to start sharing your favorite recipes.</p>
+
+    <% if (error) { %>
+      <div class="alert"><%= error %></div>
+    <% } %>
+
+    <form action="/register" method="POST">
+      <div class="form-group">
+        <label for="username">Username</label>
+        <input type="text" id="username" name="username" placeholder="Choose a username" required autofocus>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input type="password" id="password" name="password" placeholder="••••••••" required>
+      </div>
+
+      <div class="form-group">
+        <label for="confirmPassword">Confirm Password</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" placeholder="••••••••" required>
+      </div>
+
+      <div class="form-group">
+        <label>Account Type</label>
+        <div class="role-select-group">
+          <div class="role-option">
+            <input type="radio" id="role-user" name="role" value="user" checked>
+            <label for="role-user">🍽 Home Cook</label>
+          </div>
+          <div class="role-option">
+            <input type="radio" id="role-admin" name="role" value="admin">
+            <label for="role-admin">🧑‍🍳 Admin Chef</label>
+          </div>
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block">Create Account</button>
+    </form>
+
+    <p class="form-footer">Already have an account? <a href="/login">Sign in</a></p>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

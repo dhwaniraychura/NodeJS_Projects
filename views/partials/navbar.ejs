@@ -1,0 +1,25 @@
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/recipes" class="brand">
+      <span class="brand-mark">🍲</span>
+      <span>The Hearth Book</span>
+    </a>
+
+    <div class="nav-links">
+      <a href="/recipes" class="nav-link <%= currentPath === '/recipes' ? 'active' : '' %>">All Recipes</a>
+
+      <% if (user) { %>
+        <a href="/recipes/my" class="nav-link <%= currentPath === '/recipes/my' ? 'active' : '' %>">My Recipes</a>
+        <a href="/recipes/new" class="nav-link btn-outline <%= currentPath === '/recipes/new' ? 'active' : '' %>">+ Add Recipe</a>
+        <a href="/logout" class="nav-link btn-outline">Sign Out</a>
+        <span class="nav-user">
+          <%= user.username %>
+          <span class="role-badge"><%= user.role %></span>
+        </span>
+      <% } else { %>
+        <a href="/login" class="nav-link <%= currentPath === '/login' ? 'active' : '' %>">Login</a>
+        <a href="/register" class="nav-link btn-outline <%= currentPath === '/register' ? 'active' : '' %>">Register</a>
+      <% } %>
+    </div>
+  </div>
+</nav>

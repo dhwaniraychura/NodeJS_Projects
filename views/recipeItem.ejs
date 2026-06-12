@@ -1,0 +1,90 @@
+<%- include('partials/head') %>
+<%- include('partials/navbar') %>
+
+<div class="container">
+  <div class="recipe-detail">
+    <img src="<%= recipe.image %>" alt="<%= recipe.title %>" class="recipe-detail-image" onerror="this.src='/images/default-recipe.svg'">
+
+    <div class="recipe-detail-header">
+      <span class="recipe-category"><%= recipe.category %></span>
+      <h1><%= recipe.title %></h1>
+      <p class="desc"><%= recipe.description %></p>
+
+      <div class="recipe-info-row">
+        <div class="info-pill">
+          <span class="label">Cooking Time</span>
+          <span class="value">⏱ <%= recipe.cookingTime %></span>
+        </div>
+        <div class="info-pill">
+          <span class="label">Shared By</span>
+          <span class="value"><%= recipe.author ? recipe.author.username : 'Unknown' %></span>
+        </div>
+        <div class="info-pill">
+          <span class="label">Ingredients</span>
+          <span class="value"><%= recipe.ingredients.length %> items</span>
+        </div>
+      </div>
+
+      <% if (user && (user.id === recipe.author._id.toString() || user.role === 'admin')) { %>
+        <div class="recipe-actions">
+          <a href="/recipes/<%= recipe._id %>/edit" class="btn btn-secondary">Edit Recipe</a>
+          <form action="/recipes/<%= recipe._id %>?_method=DELETE" method="POST">
+            <button type="submit" class="btn btn-danger" onclick="return confirm('Delete this recipe?')">Delete</button>
+          </form>
+        </div>
+      <% } %>
+    </div>
+  </div>
+
+  <div class="recipe-body-section">
+    <h2>Ingredients</h2>
+    <ul class="ingredient-list">
+      <% recipe.ingredients.forEach(ing => { %>
+        <li><%= ing %></li>
+      <% }) %>
+    </ul>
+  </div>
+
+  <div class="recipe-body-section">
+    <h2>Instructions</h2>
+    <p class="instructions-text"><%= recipe.instructions %></p>
+  </div>
+
+  <div class="comments-section">
+    <h2>Comments (<%= recipe.comments.length %>)</h2>
+
+    <% if (user) { %>
+      <form action="/recipes/<%= recipe._id %>/comments" method="POST" class="comment-form">
+        <textarea name="text" placeholder="Share your thoughts on this recipe..." required></textarea>
+        <button type="submit" class="btn btn-primary">Post</button>
+      </form>
+    <% } else { %>
+      <p style="color: var(--text-muted); margin-bottom: 1.5rem;">
+        <a href="/login" style="color: var(--saffron); font-weight: 700;">Login</a> to leave a comment.
+      </p>
+    <% } %>
+
+    <% if (recipe.comments.length === 0) { %>
+      <p style="color: var(--text-muted);">No comments yet. Be the first to share your thoughts!</p>
+    <% } else { %>
+      <div class="comment-list">
+        <% recipe.comments.slice().reverse().forEach(comment => { %>
+          <div class="comment-item">
+            <div class="comment-header">
+              <span class="comment-author"><%= comment.author ? comment.author.username : 'Unknown' %></span>
+              <span class="comment-date"><%= new Date(comment.createdAt).toLocaleDateString() %></span>
+            </div>
+            <p class="comment-text"><%= comment.text %></p>
+            <% if (user && (user.id === comment.author._id.toString() || user.role === 'admin')) { %>
+              <form action="/recipes/<%= recipe._id %>/comments/<%= comment._id %>?_method=DELETE" method="POST" style="margin-top: 0.5rem;">
+                <button type="submit" class="comment-delete" onclick="return confirm('Delete this comment?')">Delete</button>
+              </form>
+            <% } %>
+          </div>
+        <% }) %>
+      </div>
+    <% } %>
+  </div>
+</div>
+
+<%- include('partials/footer') %>

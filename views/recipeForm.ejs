@@ -1,0 +1,63 @@
+<%- include('partials/head') %>
+<%- include('partials/navbar') %>
+
+<div class="container">
+  <div class="page-header">
+    <div>
+      <span class="eyebrow"><%= recipe ? 'Refine the Dish' : 'New Addition' %></span>
+      <h1><%= recipe ? 'Edit Recipe' : 'Share a Recipe' %></h1>
+      <p><%= recipe ? 'Update the details below and save your changes.' : 'Fill in the details below to add a new dish to The Hearth Book.' %></p>
+    </div>
+  </div>
+
+  <div class="form-card">
+    <form action="<%= formAction %>" method="POST">
+      <div class="form-group">
+        <label for="title">Recipe Title</label>
+        <input type="text" id="title" name="title" placeholder="e.g. Slow-Roasted Garlic Tomato Pasta" value="<%= recipe ? recipe.title : '' %>" required>
+      </div>
+
+      <div class="form-group">
+        <label for="description">Short Description</label>
+        <textarea id="description" name="description" placeholder="A brief, mouth-watering summary of the dish..." required><%= recipe ? recipe.description : '' %></textarea>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select id="category" name="category">
+            <% ['Breakfast','Lunch','Dinner','Dessert','Snack','Beverage','Other'].forEach(cat => { %>
+              <option value="<%= cat %>" <%= recipe && recipe.category === cat ? 'selected' : '' %>><%= cat %></option>
+            <% }) %>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="cookingTime">Cooking Time</label>
+          <input type="text" id="cookingTime" name="cookingTime" placeholder="e.g. 35 minutes" value="<%= recipe ? recipe.cookingTime : '' %>">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="image">Image URL</label>
+        <input type="text" id="image" name="image" placeholder="https://example.com/dish.jpg" value="<%= recipe ? recipe.image : '' %>">
+        <p class="hint">Leave blank to use a default culinary placeholder image.</p>
+      </div>
+
+      <div class="form-group">
+        <label for="ingredients">Ingredients</label>
+        <textarea id="ingredients" name="ingredients" placeholder="200g pasta, 4 cloves garlic, 1 can crushed tomatoes, fresh basil, olive oil" required><%= recipe ? recipe.ingredients.join(', ') : '' %></textarea>
+        <p class="hint">Separate each ingredient with a comma.</p>
+      </div>
+
+      <div class="form-group">
+        <label for="instructions">Instructions</label>
+        <textarea id="instructions" name="instructions" placeholder="1. Bring a large pot of salted water to a boil...&#10;2. Meanwhile, heat olive oil in a pan..." style="min-height:160px" required><%= recipe ? recipe.instructions : '' %></textarea>
+        <p class="hint">Use line breaks to separate steps.</p>
+      </div>
+
+      <button type="submit" class="btn btn-primary btn-block"><%= recipe ? 'Save Changes' : 'Add Recipe to The Hearth Book' %></button>
+    </form>
+  </div>
+</div>
+
+<%- include('partials/footer') %>
