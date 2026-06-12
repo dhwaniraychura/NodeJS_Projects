@@ -81,3 +81,8 @@ recipe-app/
 - **My Recipes** (`/recipes/my`) shows only the logged-in user's recipes.
 - **All Recipes** (`/recipes`) is public and shows everyone's recipes.
 - Only the recipe's author or an `admin` can edit/delete a recipe or its comments.
+
+## Screen Shots
+<img width="1919" height="859" alt="image" src="https://github.com/user-attachments/assets/6678d0c3-b5f2-47dd-bf39-06b957a37f9b" />
+
+
